@@ -61,14 +61,23 @@ tárhelyen kiszolgálható (Cloudflare Workers, Netlify, GitHub Pages).
 
 ## Telefon, hozzáférhetőség, sebesség
 
-- 320 px-től működik, vízszintes görgetés nélkül; minden gomb legalább 44 px-es
+- 320 px-től működik, vízszintes görgetés nélkül; minden gomb legalább 44 px-es (375, 320 px és fekvő nézetben tesztelve)
+- Telefonos elrendezés (`styles.css` végén, „Telefonos finomhangolás”):
+  - a nyitókép sorrendje: cím → lélegző gömb → szöveg → gombok, így a gömb és a foglalás gomb is az első képernyőn van
+  - a fejlécben csak a másik nyelv gombja látszik (HU-n „EN”, EN-en „HU”), így a név sosem törik két sorba
+  - a teljes képernyős menü alján ott a telefonszám, az e-mail és a cím
+  - a „Mit kér ma a teste?” ajánló gombjai egy vízszintesen húzható sorban vannak
+  - tömörebb szemlélet-pillérek, bemutatkozás, kezelés-sorok és idővonal-szerű „kezelés menete” – az oldal kb. 20 %-kal rövidebb
+  - az alsó Hívás / Időpontot kérek sáv a nyitókép után jelenik meg, és eltűnik az időpontkérés résznél (ott nem takar
+    ki semmit, és a billentyűzettel sem ütközik)
+  - érintésre finom „lenyomódás” visszajelzés, nincs kék villanás koppintáskor
 - Telefonon a szövegek nem úsznak be (azonnal látszanak), a fejléc egy helyben áll, nincs elmosott háttér és
   filmszemcse – görgetéskor nem akad
 - A lélegző gömb csak akkor számol, amikor látszik; aki kikapcsolta az animációkat (`prefers-reduced-motion`),
   annak minden mozdulatlan, és a vélemények sem lapoznak maguktól
 - Nincs külső betöltés (betűk, képek, kód mind saját), a Google Térkép csak kattintásra
 - Keresőknek: leírás, megosztási kép, strukturált adat (`HealthAndBeautyBusiness`)
-- A `styles.css` és a `script.js` hivatkozásában verziószám van (`?v=1`): módosítás után érdemes növelni, hogy a
+- A `styles.css` és a `script.js` hivatkozásában verziószám van (`?v=2`): módosítás után érdemes növelni, hogy a
   telefonok biztosan az új változatot töltsék le
 
 ## Tartalom szerkesztése

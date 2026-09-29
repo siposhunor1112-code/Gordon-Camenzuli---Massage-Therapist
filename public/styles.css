@@ -547,3 +547,156 @@ abbr { text-decoration: none; }
 .lost h1 { font: 300 clamp(44px, 8vw, 84px)/1 var(--serif); letter-spacing: -.02em; }
 .lost h1 em { display: block; color: var(--clay); }
 .lost__en { color: var(--ink-3); }
+
+/* =========================================================
+   Telefonos finomhangolás
+   ========================================================= */
+html { -webkit-tap-highlight-color: transparent; }
+.nav__extra { display: none; }
+@media (hover: none) {
+  .chip:active, .btn:active, .qbtn:active, .lang button:active, .dock a:active { transform: scale(.96); }
+  .chip, .qbtn, .lang button, .dock a { transition-property: background-color, color, border-color, transform; transition-duration: .2s; }
+}
+
+/* menü: alul elérhetőségek */
+@media (max-width: 960px) {
+  .nav .nav__extra { display: grid; gap: 4px; margin-top: auto; padding-top: 36px; width: 100%; }
+  .nav .nav__extra a, .nav .nav__extra p {
+    font: 400 16px/1.4 var(--sans); color: var(--ink-2); border: 0; padding: 10px 0; width: auto;
+    display: flex; align-items: center; gap: 10px; min-height: 44px;
+  }
+  .nav .nav__extra a:first-child { font: 400 28px/1.1 var(--serif); color: var(--ink); }
+  .nav .nav__extra svg { width: 20px; height: 20px; color: var(--clay); }
+  .nav .nav__extra p { color: var(--ink-3); font-size: 14px; min-height: 0; }
+}
+
+@media (max-width: 760px) {
+  :root { --pad: 76px; --radius: 18px; }
+  body { font-size: 16.5px; }
+  .section__head { gap: 16px; margin-bottom: 40px; }
+  .section__head h2 { font-size: clamp(40px, 11.5vw, 56px); line-height: 1.02; }
+  .eyebrow { letter-spacing: .16em; font-size: 11.5px; }
+
+  /* fejléc: csak a másik nyelv gombja látszik, 44 px-es körben */
+  .lang { border: 0; padding: 0; }
+  .lang button[aria-pressed="true"] { display: none; }
+  .lang button { min-width: 44px; min-height: 44px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 12px; }
+
+  /* nyitókép: cím → lélegző gömb → szöveg → gombok, mind egy képernyőn belül kezdődik */
+  .hero { display: flex; flex-direction: column; align-items: stretch; padding-top: 28px; padding-bottom: 36px; }
+  .hero__text { display: contents; }
+  .hero .eyebrow { order: 1; margin-bottom: 14px; }
+  .hero__title { order: 2; font-size: clamp(50px, 15vw, 68px); }
+  .breath { order: 3; width: min(62vw, 250px); margin: 18px auto 10px; }
+  .hero__lead { order: 4; margin-top: 10px; }
+  .hero__cta { order: 5; margin-top: 24px; }
+  .breath__hint { display: none; }
+  .facts { order: 6; margin-top: 40px; }
+  .facts dd { font-size: 20px; }
+  .breath__word { font-size: 20px; }
+
+  .ribbon { padding: 14px 0; }
+  .ribbon span { font-size: 24px; }
+
+  /* szemlélet */
+  .approach__body { gap: 44px; }
+  .approach__lead { font-size: 25px; line-height: 1.32; }
+  .pillars { gap: 0; }
+  .pillars li { grid-template-columns: 40px minmax(0, 1fr); column-gap: 16px; row-gap: 6px; padding: 20px 0; }
+  .pillars svg { grid-row: span 2; width: 36px; height: 36px; margin: 2px 0 0; }
+  .pillars h3 { font-size: 26px; }
+  .pillars p { font-size: 15.5px; }
+
+  .therapist { margin-top: 56px; grid-template-columns: 92px minmax(0, 1fr); column-gap: 20px; row-gap: 0; align-items: end; }
+  .therapist__art { grid-row: 1 / span 2; width: 92px; border-radius: 60px 60px 14px 14px; }
+  .therapist figcaption { display: contents; }
+  .therapist figcaption .eyebrow { grid-column: 2; align-self: end; margin-bottom: 8px; }
+  .therapist h3 { grid-column: 2; font-size: 30px; line-height: 1.05; }
+  .therapist figcaption > p:last-child { grid-column: 1 / -1; margin-top: 22px; font-size: 16.5px; }
+
+  /* ajánló: vízszintesen görgethető chip-sor */
+  .finder { padding: 20px 0 18px; gap: 14px; border-radius: var(--radius); }
+  .finder__q { padding: 0 20px; font-size: 26px; }
+  .finder .chips {
+    flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+    padding: 2px 20px; scroll-padding: 0 20px; -webkit-overflow-scrolling: touch;
+    mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 28px), transparent);
+  }
+  .finder .chips::-webkit-scrollbar { display: none; }
+  .finder .chip { flex: none; scroll-snap-align: start; white-space: nowrap; }
+  .finder__out { padding: 0 20px; font-size: 15px; min-height: 0; }
+  .finder__out:empty { display: none; }
+
+  /* kezelések: tömörebb sorok */
+  .tr { grid-template-columns: 30px minmax(0, 1fr); gap: 12px; padding: 24px 0; }
+  .tr__n { font-size: 18px; padding-top: 6px; }
+  .tr h3 { font-size: 30px; gap: 2px 12px; margin-bottom: 8px; }
+  .tr h3 span { font-size: 11px; letter-spacing: .14em; }
+  .tr p { font-size: 15.5px; }
+  .tr__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 14px; }
+  .press i { width: 18px; }
+  .tr__for { font-size: 13px; }
+  .tlist.is-filtering .tr { opacity: .38; }
+
+  /* kezelés menete: idővonal */
+  .steps { grid-template-columns: 1fr; gap: 0; }
+  .steps li { grid-template-columns: 30px minmax(0, 1fr); column-gap: 12px; row-gap: 6px; padding: 18px 0; }
+  .steps__n { grid-row: span 2; padding-top: 6px; }
+  .steps h3 { font-size: 25px; }
+  .steps p { font-size: 15.5px; }
+  .space { margin-top: 48px; }
+  .space__art { aspect-ratio: 16 / 10; min-height: 0; }
+  .space__text { padding: 24px 22px 28px; gap: 12px; }
+  .space__text h3 { font-size: 32px; }
+  .forwho { margin-top: 48px; gap: 14px; }
+  .forwho li { font-size: 25px; }
+
+  /* vélemények */
+  .quotes { gap: 28px; }
+  .quotes__stage { min-height: 0; }
+  .q { gap: 20px; }
+  .q p { font-size: clamp(26px, 7.4vw, 32px); line-height: 1.18; }
+  .proof { margin-top: 48px; gap: 24px; }
+  .proof__stat strong { font-size: 64px; }
+  .proof__links a { padding: 12px 0; }
+
+  /* GYIK */
+  .faq summary { padding: 20px 0; font-size: 22px; gap: 16px; }
+  .faq summary::after { width: 34px; height: 34px; }
+  .faq details p { padding: 0 0 22px; font-size: 15.5px; }
+
+  /* időpont */
+  .book__grid { gap: 48px; }
+  .contact { gap: 16px; }
+  .contact__phone { font-size: clamp(36px, 11vw, 46px); padding: 4px 0; }
+  .contact__mail { padding: 8px 0; }
+  .contact__dl > div { grid-template-columns: 104px minmax(0, 1fr); gap: 12px; padding: 14px 0; }
+  .route .btn { flex: 1 1 0; }
+  .map { aspect-ratio: 16 / 11; }
+  .composer { padding: 22px 18px 24px; gap: 24px; margin: 0 -4px; }
+  .composer .chips { gap: 6px; }
+  .composer .chip { padding: 0 14px; font-size: 14px; }
+  .composer__preview { padding: 16px; }
+  .composer__preview p:last-child { font-size: 17.5px; }
+  .composer__send .btn { flex: 1 1 100%; }
+
+  /* lábléc */
+  .foot__row { flex-direction: column; gap: 10px; font-size: 13.5px; }
+  .foot__row a { display: inline-block; padding: 10px 0; }
+  .foot__row .js-tel, .foot__row .js-addr { white-space: nowrap; }
+  .foot__row p:nth-child(2) { line-height: 1.5; }
+  .foot__row p:nth-child(2) .js-tel { padding: 0; }
+
+  /* gyorssáv */
+  .dock { left: 10px; right: 10px; padding: 5px; bottom: calc(10px + env(safe-area-inset-bottom)); }
+  .dock a { min-height: 46px; }
+}
+
+@media (max-width: 360px) {
+  .hero__title { font-size: 48px; }
+  .hero__cta .btn { flex: 1 1 100%; }
+  .therapist { grid-template-columns: 76px minmax(0, 1fr); }
+  .therapist__art { width: 76px; }
+  .therapist h3 { font-size: 26px; }
+  .contact__dl > div { grid-template-columns: 1fr; gap: 2px; }
+}

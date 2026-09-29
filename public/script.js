@@ -215,7 +215,12 @@ addEventListener("scroll", () => {
 }, { passive: true });
 
 if ("IntersectionObserver" in window) {
-  new IntersectionObserver(([e]) => dock.classList.toggle("show", !e.isIntersecting), { rootMargin: "-40% 0px 0px 0px" }).observe(hero);
+  // A gyorssáv a nyitókép után jelenik meg, és eltűnik, amikor az időpontkérés rész látszik (ott úgyis minden kéznél van)
+  const book = $("#idopont");
+  const seen = { hero: true, book: false };
+  const dockUpdate = () => dock.classList.toggle("show", !seen.hero && !seen.book);
+  new IntersectionObserver(([e]) => { seen.hero = e.isIntersecting; dockUpdate(); }, { rootMargin: "-40% 0px 0px 0px" }).observe(hero);
+  new IntersectionObserver(([e]) => { seen.book = e.isIntersecting; dockUpdate(); }, { rootMargin: "0px 0px -30% 0px" }).observe(book);
 
   const links = new Map($$('.nav a[href^="#"]:not(.nav__cta)').map((a) => [a.getAttribute("href").slice(1), a]));
   const spy = new IntersectionObserver((entries) => {
